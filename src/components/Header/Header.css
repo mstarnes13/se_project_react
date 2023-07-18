@@ -11,3 +11,14 @@
   letter-spacing: 0em;
   text-align: left;
 }
+.header__logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__avatar-logo {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

@@ -1,26 +1,33 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 60px;
-  padding: 0 40px;
+.main {
+  padding-bottom: 150px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.weather {
+  position: relative;
+}
+
+.weather__info {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  color: white;
   font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 20px;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
+  padding-top: 20px;
 }
 
-.header__logo {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+.weather__image {
+  width: 100%;
+}
+.card__section {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.header__avatar-logo {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
 
