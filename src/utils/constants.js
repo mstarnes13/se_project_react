@@ -1,4 +1,18 @@
-import "./ItemCard.css";
+//day
+// import sunny from "../images/day/Sunny.svg";
+// import cloudy from "../images/day/Cloudy.svg";
+// import fog from "../images/day/Fog.svg";
+// import rain from "../images/day/Rain.svg";
+// import snow from "../images/day/Snow.svg";
+// import storm from "../images/day/Storm.svg";
+
+// //night
+// import clear from "../images/night/clearsky.svg";
+// import nightcloudy from "../images/night/Cloudy.svg";
+// import nightfog from "../images/night/Fog.svg";
+// import nightrain from "../images/night/Rain.svg";
+// import nightsnow from "../images/night/Snow.svg";
+// import nightstorm from "../images/night/Storm.svg";
 
 // const defaultClothingItems = [
 //     {
@@ -38,15 +52,3 @@ import "./ItemCard.css";
 //       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
 //     }
 //   ]
-
-  const ItemCard = ({item}) => {
-    return  <div>
-      <div>
-      <img src={item.link} className='card__image'alt={item.name}/>
-      </div>
-      <div className='card__name'>{item.name} </div>
-      </div>;
-}
-
-
-export default ItemCard;
