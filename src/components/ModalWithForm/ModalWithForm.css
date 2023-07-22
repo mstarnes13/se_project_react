@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: "public/vendor/fonts/CabinetGrotesk-Regular.woff";
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  background-color: white;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+
+  position: relative;
+}
+
+.modal__content-form {
+  height: 436px;
+  padding: 34px 36px;
+}
+
+.modal__close {
+  background-image: url("../../images/close-button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  height: 20px;
+  width: 20px;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.modal__submit-button {
+  position: absolute;
+  bottom: 20px;
+  left: 34px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+.modal__title-form {
+  position: absolute;
+  top: 0px;
+  left: 28px;
+  margin-bottom: 24px;
+}
+
+.modal__children {
+  width: 100%;
+  max-width: 440px;
+  font-size: 16px;
+  padding-bottom: 32px;
+}
+
+.modal__form-button {
+  position: absolute;
+  border-radius: 3px;
+  width: 124px;
+  height: 36px;
+  left: 28px;
+  bottom: 36px;
+  background: rgba(0, 0, 0, 1);
+  border-style: none;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+}
+
+.modal__form-button:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
