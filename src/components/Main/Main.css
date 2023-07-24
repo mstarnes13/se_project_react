@@ -1,34 +1,21 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../../public/vendor/fonts/CabinetGrotesk-Regular.otf");
+}
+
 .main {
   padding-bottom: 150px;
   padding-left: 40px;
   padding-right: 40px;
 }
 
-.weather {
-  position: relative;
-}
-
-.weather__info {
-  position: absolute;
-  top: 5px;
-  left: 16px;
-  color: white;
-  font-family: "Cabinet Grotesk", sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 25px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-top: 20px;
-}
-
-.weather__image {
-  width: 100%;
-}
 .card__section {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 20px;
   margin-bottom: 20px;
- 
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .card_items {
@@ -42,10 +29,11 @@
 }
 
 .weather__suggest {
+  font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
-  margin: 40px 0 0 0;
+  margin-bottom: 40px;
   padding: 80px 0 0 0;
 }

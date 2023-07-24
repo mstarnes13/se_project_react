@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../../public/vendor/fonts/CabinetGrotesk-Regular.otf");
+}
+
+.weather {
+  margin: 28px 40px 40px;
+  position: relative;
+}
+
+.weather__info {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  color: white;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.weather__image {
+  width: 100%;
+  min-height: 80px;
+}

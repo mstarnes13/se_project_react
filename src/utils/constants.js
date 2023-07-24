@@ -1,18 +1,85 @@
 //day
-// import sunny from "../images/day/Sunny.svg";
-// import cloudy from "../images/day/Cloudy.svg";
-// import fog from "../images/day/Fog.svg";
-// import rain from "../images/day/Rain.svg";
-// import snow from "../images/day/Snow.svg";
-// import storm from "../images/day/Storm.svg";
+import sunny from "../images/Day/sunny.svg";
+import cloudy from "../images/Day/cloudy.svg";
+import fog from "../images/Day/fog.svg";
+import rain from "../images/Day/rain.svg";
+import snow from "../images/Day/snow.svg";
+import storm from "../images/Day/storm.svg";
 
-// //night
-// import clear from "../images/night/clearsky.svg";
-// import nightcloudy from "../images/night/Cloudy.svg";
-// import nightfog from "../images/night/Fog.svg";
-// import nightrain from "../images/night/Rain.svg";
-// import nightsnow from "../images/night/Snow.svg";
-// import nightstorm from "../images/night/Storm.svg";
+//night
+import clear from "../images/Night/clear.svg";
+import nightcloudy from "../images/Night/cloudy.svg";
+import nightfog from "../images/Night/fog.svg";
+import nightrain from "../images/Night/rain.svg";
+import nightsnow from "../images/Night/snow.svg";
+import nightstorm from "../images/Night/storm.svg";
+
+export const latitude = 35.227085;
+export const longitude = -80.843124;
+export const APIkey = "f970ef09677a792031b6e402b28b0e3b";
+
+export const weatherOptions = [
+  {
+    url: sunny,
+    day: true,
+    type: "sunny",
+  },
+  {
+    url: cloudy,
+    day: true,
+    type: "cloudy",
+  },
+  {
+    url: fog,
+    day: true,
+    type: "fog",
+  },
+  {
+    url: rain,
+    day: true,
+    type: "rain",
+  },
+  {
+    url: snow,
+    day: true,
+    type: "snow",
+  },
+  {
+    url: storm,
+    day: true,
+    type: "storm",
+  },
+  {
+    url: clear,
+    day: false,
+    type: "Clear sky",
+  },
+  {
+    url: nightcloudy,
+    day: false,
+    type: "cloudy",
+  },
+  {
+    url: nightfog,
+    day: false,
+    type: "fog",
+  },
+  {
+    url: nightrain,
+    day: false,
+    type: "rain",
+  },
+  {
+    url: nightsnow,
+    day: false,
+    type: "snow",
+  },
+  {
+    url: nightstorm,
+    day: false,
+    type: "storm",
+  },
+];
 
 export const defaultClothingItems = [
   {

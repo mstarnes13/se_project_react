@@ -1,36 +1,49 @@
-
-
-.card {
-  width: 310px;
-  height: 310px;
-  border-radius: 19px;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../../public/vendor/fonts/CabinetGrotesk-Regular.otf");
 }
 
-.card_name {
+.modal__input-name {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 0px;
+}
+
+.modal__content-form {
+  height: 24px;
+}
+
+.modal__input-link {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 24px;
+}
+
+.modal__label {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.weather__selections {
   font-size: 16px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 16px;
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 2px 12px;
-  margin: 0;
 }
-
-.card__image {
-  height: 325px;
-  width: 328px;
-  border-radius: 10px;
-}
-

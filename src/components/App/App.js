@@ -1,35 +1,59 @@
-// import logo from './';
+// import logo from "./logo.svg";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
+import {
+  getCityName,
+  getForecastWeather,
+  getTemperature,
+} from "../../utils/weatherApi";
 
 function App() {
-  const weatherTemp = "75";
   const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
+  const [city, setCity] = useState(0);
 
   const handleCreateModal = () => {
-  setActiveModal('create');
+    setActiveModal("create");
   };
   const handleCloseModal = () => {
     setActiveModal("");
   };
 
   const handleSelectedCard = (card) => {
-    setActiveModal ("preview");
+    setActiveModal("preview");
     setSelectedCard(card);
   };
 
+  useEffect(() => {
+    getForecastWeather()
+      .then((data) => {
+        const temperature = getTemperature(data);
+        const cityName = getCityName(data);
+        setCity(cityName);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
+      <Header onCreateModal={handleCreateModal} cityName={city} />
+      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm buttonText="Add garment" title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          buttonText="Add garment"
+          title="New Garment"
+          onClose={handleCloseModal}
+        >
           <div className="modal__form">
             <label className="modal__label">
               Name
@@ -45,7 +69,7 @@ function App() {
             <label className="modal__label">
               Image
               <input
-                className="modal__input-name"
+                className="modal__input-link"
                 type="url"
                 name="link"
                 minLength="1"

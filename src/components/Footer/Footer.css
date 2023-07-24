@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Cabinet Grotesk";
-    src: "../public/vendor/CabinetGrotesk-Regular.woff";
+    src: url("../../../public/vendor/fonts/CabinetGrotesk-Regular.otf");
   }
   
   .footer {
