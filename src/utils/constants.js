@@ -14,8 +14,8 @@ import nightrain from "../images/Night/rain.svg";
 import nightsnow from "../images/Night/snow.svg";
 import nightstorm from "../images/Night/storm.svg";
 
-export const latitude = 35.227085;
-export const longitude = -80.843124;
+export const latitude = 25.7617;
+export const longitude = -80.1918;
 export const APIkey = "f970ef09677a792031b6e402b28b0e3b";
 
 export const weatherOptions = [

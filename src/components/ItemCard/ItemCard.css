@@ -10,8 +10,10 @@
   position: relative;
   overflow: hidden;
   margin: 0;
-  padding: 0;
+  padding-left: 0;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -36,5 +38,4 @@
   height: 325px;
   width: 328px;
   border-radius: 10px;
-  display: flex;
 }
