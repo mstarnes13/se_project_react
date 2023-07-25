@@ -1,8 +1,6 @@
 import "./ItemModal.css";
 
 const ItemModal = ({ selectedCard, onClose }) => {
-  console.log("item modal");
-
   return (
     <div className={`modal`}>
       <div className="modal__content">
@@ -11,9 +9,13 @@ const ItemModal = ({ selectedCard, onClose }) => {
           type="button"
           onClick={onClose}
         ></button>
-        <img className="modal__image" src={selectedCard.link}></img>
+        <img
+          className="modal__image"
+          src={selectedCard.link}
+          alt={selectedCard.name}
+        ></img>
         <div className="modal__info">
-          <div className="modal__title">{selectedCard.name}</div>
+          <p className="modal__title">{selectedCard.name}</p>
           <div className="modal__weather-type">
             Weather Type: {selectedCard.weather}
           </div>
