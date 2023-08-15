@@ -11,7 +11,7 @@ import {
   parseWeatherData,
 } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route } from "../../utils/constants";
+import { Switch, Route } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import { deleteItems, getItems, postItems } from "../../utils/Api";
