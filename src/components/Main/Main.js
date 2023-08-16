@@ -45,7 +45,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
           Today is {temp}°{currentTemperatureUnit} / You may want to wear:{" "}
         </div>
         <div className="card_items">
-          {filteredCards.map((item) => (
+          {filteredCards?.map((item) => (
             <ItemCard
               item={item}
               onSelectCard={onSelectCard}

@@ -16,7 +16,7 @@ const ClothesSection = ({ onSelectCard, onCreateModal, clothingItems }) => {
         </button>
       </div>
       <div className="clothing__section-cards">
-        {clothingItems.map((item) => {
+        {clothingItems?.map((item) => {
           console.log(clothingItems);
           return (
             <ItemCard
