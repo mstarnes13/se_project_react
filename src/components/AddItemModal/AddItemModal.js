@@ -41,7 +41,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
             type="text"
             name="name"
             minLength="1"
-            maxLength="30"
+            maxLength="300"
             placeholder="Name"
             value={name}
             onChange={handleNameChange}
