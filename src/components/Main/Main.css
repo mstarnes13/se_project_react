@@ -18,6 +18,11 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1360px;
+  width: 100%;
+  padding-top: 34px;
 }
 
 .weather__suggest {

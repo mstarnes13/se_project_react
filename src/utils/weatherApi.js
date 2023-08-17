@@ -3,19 +3,20 @@
 import { latitude } from "./constants";
 import { longitude } from "./constants";
 import { APIkey } from "./constants";
+import { checkResponse } from "./Api";
 
-const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
+// const processServerResponse = (res) => {
+//   if (res.ok) {
+//     return res.json();
+//   }
+//   return Promise.reject(`Error: ${res.status}`);
+// };
 
 export const getForecastWeather = () => {
   const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   )
-    .then(processServerResponse)
+    .then(checkResponse)
     .catch((error) => {
       console.log(error);
     });
@@ -40,7 +41,6 @@ export const getCityName = (data) => {
   const cityName = data["name"];
   return cityName;
 };
-
 
 // weather.temperature.F = `${Math.round(data.main.temp)}°F`;
 // weather.temperature.C = `${Math.round((data.main.temp - 32) * 5/9)}°C`;

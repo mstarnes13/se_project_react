@@ -31,10 +31,9 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
 
   const weatherType = getWeatherType();
 
-  console.log(weatherType);
-
   const filteredCards = clothingItems?.filter((item) => {
-    return item.weather.toLowerCase() === weatherType();
+    console.log(item);
+    return item.weather.toLowerCase() === weatherType;
   });
 
   return (
@@ -44,7 +43,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
         <div className="weather__suggest">
           Today is {temp}°{currentTemperatureUnit} / You may want to wear:{" "}
         </div>
-        <div className="card_items">
+        <div className="card__items">
           {filteredCards?.map((item) => (
             <ItemCard
               item={item}

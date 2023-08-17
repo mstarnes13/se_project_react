@@ -16,7 +16,6 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import { deleteItems, getItems, postItems } from "../../utils/Api";
 
-
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -64,13 +63,11 @@ function App() {
   };
 
   const handleDeleteCard = (cardElement) => {
-    console.log(cardElement);
     deleteItems(cardElement)
       .then(() => {
         const newClothesList = clothingItems.filter((cards) => {
           return cards.id !== cardElement;
         });
-        console.log(newClothesList);
         setClothingItems(newClothesList);
         handleCloseModal();
       })
@@ -99,7 +96,11 @@ function App() {
       <Header onCreateModal={handleCreateModal} cityName={city} />
       <Switch>
         <Route exact path="/">
-          <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+          <Main
+            weatherTemp={temp}
+            onSelectCard={handleSelectedCard}
+            clothingItems={clothingItems}
+          />
         </Route>
         <Route path="/profile">
           <Profile

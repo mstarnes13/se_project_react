@@ -1,5 +1,5 @@
-// const baseUrl = "https://my-json-server.typicode.com/mstarnes13/se_project_react";
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://my-json-server.typicode.com/mstarnes13/se_project_react";
+// const baseUrl = "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
@@ -19,7 +19,6 @@ export function getItems() {
 
 // POST Items
 export function postItems({ name, link, weather }) {
-  console.log(postItems);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -42,3 +41,4 @@ export function deleteItems(id) {
     },
   }).then(checkResponse);
 }
+// 
