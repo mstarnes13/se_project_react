@@ -1,5 +1,3 @@
-export const username = "Michelle Starnes";
-
 //day
 import sunny from "../images/Day/sunny.svg";
 import cloudy from "../images/Day/cloudy.svg";
@@ -82,3 +80,5 @@ export const weatherOptions = [
     type: "storm",
   },
 ];
+
+export const username = "Michelle Starnes";

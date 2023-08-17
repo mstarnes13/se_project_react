@@ -42,7 +42,7 @@ function App() {
         setClothingItems(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.status);
       });
   }, []);
 
@@ -58,8 +58,7 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "C" ? "F" : "C");
   };
 
   const handleDeleteCard = (cardElement) => {

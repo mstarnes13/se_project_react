@@ -8,7 +8,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
   const getWeatherType = () => {
     if (currentTemperatureUnit === "C") {
       if (temp >= 30) {
@@ -45,11 +45,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
         </div>
         <div className="card__items">
           {filteredCards?.map((item) => (
-            <ItemCard
-              item={item}
-              onSelectCard={onSelectCard}
-              key={item?._id || item?.id}
-            />
+            <ItemCard item={item} onSelectCard={onSelectCard} key={item.id} />
           ))}
         </div>
       </section>
