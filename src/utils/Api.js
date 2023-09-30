@@ -1,5 +1,4 @@
-const baseUrl = "https://my-json-server.typicode.com/mstarnes13/se_project_react";
-// const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
 export const checkResponse = (res) => {
   if (res.ok) {
