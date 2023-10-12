@@ -1,15 +1,19 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const currentDate = new Date().toLocaleString("default", {
-  month: "long",
-  day: "numeric",
-});
+const Header = ({ onCreateModal, location, onSignUp, isLoggedIn }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  const { avatar, name } = currentUser;
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
 
-const Header = ({ onCreateModal, cityName }) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -19,22 +23,33 @@ const Header = ({ onCreateModal, cityName }) => {
           </Link>
         </div>
         <div className="header__location">
-          {currentDate}, {cityName}
+          {currentDate}, {location}
         </div>
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <div>
-          <button className="nav__button" type="text" onClick={onCreateModal}>
-            + Add New Clothes
-          </button>
-        </div>
-        <Link to="/profile" className="nav__name">
-          Michelle Starnes
-        </Link>
-        <div>
-          <img src={avatar} alt="Avatar" />
-        </div>
+        {isLoggedIn ? (
+          <div className="header__nav">
+            <button className="nav__button" type="text" onClick={onCreateModal}>
+              + Add New Clothes
+            </button>
+            <Link to="/profile" className="nav__name">
+              {name}
+            </Link>
+            <Link to="profile" className="header__avatar">
+              <img className="header__avatar" src={avatar} alt="avatar" />
+            </Link>
+          </div>
+        ) : (
+          <div className="header__avatar-logo">
+            <button className="header__button" onClick={onSignUp}>
+              Sign Up
+            </button>
+            <button className="header__button" onClick={isLoggedIn}>
+              Log In
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

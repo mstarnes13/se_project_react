@@ -34,9 +34,9 @@ export const parseWeatherData = (data) => {
   return weather;
 };
 
-export const getCityName = (data) => {
-  const cityName = data["name"];
-  return cityName;
+export const getlocation = (data) => {
+  const location = data["name"];
+  return location;
 };
 
 // weather.temperature.F = `${Math.round(data.main.temp)}°F`;

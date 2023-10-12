@@ -31,6 +31,17 @@ export function postItems({ name, link, weather }) {
   }).then(checkResponse);
 }
 
+export function editUserProfile({name, avatar}){
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify({name, avatar}),
+  }).then(checkResponse);
+} 
+
 // DELETE Items
 export function deleteItems(id) {
   return fetch(`${baseUrl}/items/${id}`, {
@@ -40,4 +51,23 @@ export function deleteItems(id) {
     },
   }).then(checkResponse);
 }
-// 
+
+export function addCardLike(itemId) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
+}
+
+export function removeCardLike(itemId) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
+}
