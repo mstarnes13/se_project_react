@@ -34,8 +34,39 @@
   margin: 0;
 }
 
+.card__info {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  flex-direction: row;
+  top: 16px;
+  align-items: center;
+}
+
 .card__image {
   height: 325px;
   width: 328px;
   border-radius: 10px;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 16px;
+  background-image: url(../../images/liked-button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.card__like-button-inactive {
+  background-color: transparent;
+  background-image: url(../../images/unlike-button.svg);
+}
+
+.card__like-button-hidden {
+  visibility: hidden;
 }

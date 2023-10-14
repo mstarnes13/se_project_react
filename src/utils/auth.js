@@ -1,25 +1,15 @@
+import { checkResponse } from "./Api";
 export const baseUrl = "http://localhost:3001";
 
-// signup
-export const signup = ({ name, avatar, email, password }) => {
-  return fetch(`${baseUrl}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, avatar, email, password }),
-  });
-};
-
 // signin
-export const signin = ({ email, password }) => {
-  return fetch(`${baseUrl}/signin`, {
+export const signIn = ({ email, password }) => {
+  return fetch(`${baseUrl}/signIn`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  });
+  }).then(checkResponse);
 };
 
 //register
@@ -29,20 +19,10 @@ export const register = (email, password, name, avatar, token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ email, password, name, avatar }, token),
-  }).then((response) => {
-    try {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error("Registration failed");
-      }
-    } catch (e) {
-      console.error(e);
-      return e;
-    }
-  });
+    body: JSON.stringify({ email, password, name, avatar }),
+  }).then(checkResponse);
 };
 
 // check token
@@ -53,5 +33,5 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then(checkResponse);
 };

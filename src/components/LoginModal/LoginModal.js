@@ -62,6 +62,7 @@ const LoginModal = ({
           onChange={handlePasswordChange}
         ></input>
       </label>
+      <div className="modal__button-container">
       <button
         className="modal__submit-button"
         type="submit"
@@ -79,6 +80,7 @@ const LoginModal = ({
       >
         or Register
       </button>
+      </div>
     </ModalWithForm>
   );
 };

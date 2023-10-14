@@ -1,17 +1,31 @@
-import React from "react";
-import avatar from "../../images/Avatar.svg";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-import { username } from "../../utils/constants";
 
-const SideBar = () => {
+const SideBar = ({ handleSignOut, handleEditModal }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const avatar = currentUser ? currentUser.avatar : null;
+  const name = currentUser ? currentUser.name : null;
+  const history = useHistory();
+
+  const signUserOut = () => {
+    handleSignOut();
+    history.push("/");
+  };
+
   return (
     <div className="sidebar">
-      <img
-        alt="sidebar__avatar"
-        src={avatar}
-        className="sidebar__avatar-picture"
-      />
-      <p className="sidebar__avatar-name">{username}</p>
+      <div className="sidebar__container-info">
+        <img className="sidebar__img" src={avatar} alt="avatar" />
+        <h2 className="sidebar__title">{name}</h2>
+      </div>
+      <button className="sidebar__btn" type="button" onClick={handleEditModal}>
+        Edit profile
+      </button>
+      <button className="sidebar__btn" type="button" onClick={signUserOut}>
+        Log out
+      </button>
     </div>
   );
 };

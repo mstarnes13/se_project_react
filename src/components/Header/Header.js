@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/Logo.svg";
-import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Header = ({ onCreateModal, location, onSignUp, isLoggedIn }) => {
+const Header = ({ onCreateModal, location, onSignUp, onClickLogin, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const { avatar, name } = currentUser;
   const currentDate = new Date().toLocaleString("default", {
@@ -45,7 +44,7 @@ const Header = ({ onCreateModal, location, onSignUp, isLoggedIn }) => {
             <button className="header__button" onClick={onSignUp}>
               Sign Up
             </button>
-            <button className="header__button" onClick={isLoggedIn}>
+            <button className="header__button" onClick={onClickLogin}>
               Log In
             </button>
           </div>

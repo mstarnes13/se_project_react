@@ -15,19 +15,30 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal__content {
-  background-color: white;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  box-sizing: border-box;
-  max-width: 498px;
+.modal__password {
   width: 100%;
-  position: relative;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 0px;
 }
 
-.modal__image {
-  border-radius: 10px 10px 0px 0px;
+.modal__email {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  margin-bottom: 0px;
 }

@@ -3,10 +3,12 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
-  const { currentUser } = useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser?._id;
-  const deleteButtonClass = `item__delete-button ${
-    isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  console.log("item modal");
+  const userContext = useContext(CurrentUserContext);
+  const userData = userContext ? userContext : { name: "n/a", avatar: "" };
+  const isOwn = selectedCard.owner === userData._id;
+  const modalDeleteClass = `modal__button-delete ${
+    isOwn ? "modal__button-delete_visible" : "modal__button-delete_hidden"
   }`;
 
   return (
@@ -28,7 +30,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
             Weather Type: {selectedCard.weather}
           </div>
           <button
-            className="modal__button-delete"
+            className={modalDeleteClass}
             type="button"
             onClick={() => handleDeleteCard(selectedCard.id)}
           >

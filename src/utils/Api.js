@@ -18,10 +18,12 @@ export function getItems() {
 
 // POST Items
 export function postItems({ name, link, weather }) {
+  const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -31,16 +33,16 @@ export function postItems({ name, link, weather }) {
   }).then(checkResponse);
 }
 
-export function editUserProfile({name, avatar}){
+export function editUserProfile({ name, avatar }) {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-    body: JSON.stringify({name, avatar}),
+    body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
-} 
+}
 
 // DELETE Items
 export function deleteItems(id) {
@@ -48,6 +50,7 @@ export function deleteItems(id) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
 }
