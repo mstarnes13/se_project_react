@@ -14,23 +14,24 @@ const RegisterModal = ({
   const [avatar, setUrl] = useState("");
 
   const handleEmailChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setEmail(e.target.value);
   };
   const handlePasswordChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setPassword(e.target.value);
   };
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setUrl(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(email, password, name, avatar);
+    console.log('submit:', email, password, name, avatar)
+    handleRegistration({email, password, name, avatar});
   };
 
   return (
@@ -60,7 +61,7 @@ const RegisterModal = ({
         Password*
         <input
           className="modal__password"
-          type="text"
+          type="password"
           name="password"
           placeholder="Password"
           minLength="1"
@@ -81,6 +82,7 @@ const RegisterModal = ({
           maxLength="30"
           value={name}
           onChange={handleNameChange}
+          required
         ></input>
       </label>
       <label className="modal__label">
@@ -94,6 +96,7 @@ const RegisterModal = ({
           maxLength="300"
           value={avatar}
           onChange={handleUrlChange}
+          required
         ></input>
       </label>
     </ModalWithForm>

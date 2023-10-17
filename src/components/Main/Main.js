@@ -13,7 +13,7 @@ function Main({
   isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTemperatureUnit);
+  // console.log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
   const getWeatherType = () => {
     if (currentTemperatureUnit === "C") {
@@ -37,7 +37,15 @@ function Main({
 
   const weatherType = getWeatherType();
 
+  console.log('clothingItems: ', clothingItems)
+
+  // const filteredCards = clothingItems.length > 0 ? clothingItems.filter((item) => {
+  //   console.log('item filteredCards: ', item.weather)
+  //   return item.weather.toLowerCase() === weatherType;
+  // }) : []
+
   const filteredCards = clothingItems?.filter((item) => {
+    // console.log(item);
     return item.weather.toLowerCase() === weatherType;
   });
 
@@ -46,14 +54,14 @@ function Main({
       <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card__section" id="card-section">
         <div className="weather__suggest">
-          Today is {temp}°{currentTemperatureUnit} / You may want to wear:{" "}
+          Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         </div>
         <div className="card__items">
-          {filteredCards?.map((item) => (
+          {filteredCards.map((item) => (
             <ItemCard
               item={item}
               onSelectCard={onSelectCard}
-              key={item.id}
+              key={item?._id || item?.id}
               onCardClick={onCardClick}
               isLoggedIn={isLoggedIn}
             />

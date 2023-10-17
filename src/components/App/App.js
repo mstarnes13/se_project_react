@@ -58,6 +58,7 @@ function App() {
   };
 
   const handleLogInModal = () => {
+    console.log('button clicked');
     setActiveModal("login");
   };
 
@@ -70,6 +71,7 @@ function App() {
   };
 
   const handleAddItemSubmit = (values) => {
+    console.log('values in submit: ', values)
     postItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
@@ -83,7 +85,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(data);
+        setClothingItems(data.data);
       })
       .catch((error) => {
         console.error(error);
@@ -91,16 +93,19 @@ function App() {
   }, []);
 
   const handleDeleteCard = (cardElement) => {
+    console.log(cardElement);
     deleteItems(cardElement)
       .then(() => {
-        const newClothesList = clothingItems.filter(
-          (card) => card.id !== cardElement
-        );
+        const newClothesList = clothingItems.filter((card) => {
+          console.log(card._id);
+          return card._id !== cardElement;
+        });
+        console.log(newClothesList);
         setClothingItems(newClothesList);
         handleCloseModal();
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
       });
   };
 
@@ -115,12 +120,12 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  const handleRegistration = ({ email, password, nameValue, avatarValue }) => {
+  const handleRegistration = ({ email, password, name, avatar }) => {
     register({
       email: email,
       password: password,
-      name: nameValue,
-      avatar: avatarValue,
+      name: name,
+      avatar: avatar,
     })
       .then((res) => {
         handleLogin({ email, password });
@@ -156,7 +161,7 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  const handleLogout = () => {
+  const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setCurrentUser({});
     setLoggedIn(false);
@@ -197,7 +202,7 @@ function App() {
         <Header
           isLoggedIn={isLoggedIn}
           onCreateModal={handleCreateModal}
-          onSignUp={handleSignUpModal}
+          onClickSignUp={handleSignUpModal}
           onLoginModal={handleLogInModal}
           temp={temp}
           user={currentUser}
@@ -222,7 +227,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 onEditProfile={handleEditProfile}
                 onCardLike={handleLikeClick}
-                onSignOut={handleLogout}
+                handleSignOut={handleSignOut}
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
                 onEditProfileModal={handleEditProfileModal}
@@ -261,7 +266,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
-            onSignUp={handleSignUpModal}
+            onClickSignUp={handleSignUpModal}
             isLoading={isLoading}
           />
         )}

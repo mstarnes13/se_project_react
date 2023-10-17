@@ -17,8 +17,9 @@ export function getItems() {
 }
 
 // POST Items
-export function postItems({ name, link, weather }) {
+export function postItems({ name, imageUrl, weather }) {
   const token = localStorage.getItem("jwt");
+  console.log('postItems name/link/weather', name, imageUrl, weather)
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -27,7 +28,7 @@ export function postItems({ name, link, weather }) {
     },
     body: JSON.stringify({
       name,
-      link,
+      imageUrl,
       weather,
     }),
   }).then(checkResponse);

@@ -13,21 +13,23 @@ export const signIn = ({ email, password }) => {
 };
 
 //register
-export const register = (email, password, name, avatar, token) => {
-  return fetch(`${baseUrl}/signUP`, {
+export const register = ({email, password, name, avatar}) => {
+  console.log('register: ', email, password, name, avatar)
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      // Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ email, password, name, avatar }),
   }).then(checkResponse);
+  // }).then(res => console.log('res: ', res));
 };
 
 // check token
 export const checkToken = (token) => {
-  return fetch(`${baseUrl}/user/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

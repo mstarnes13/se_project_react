@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
 const LoginModal = ({
   handleCloseModal,
   isOpen,
-  onClickSignUp,
+  setActiveModal,
   handleLogin,
 }) => {
   const [email, setEmail] = useState("");
@@ -23,12 +22,15 @@ const LoginModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(email, password);
+    console.log("handleSubmit function called");
+    handleLogin({ email, password });
+    handleCloseModal();
   };
-  const handleRegister = (e) => {
-    e.preventDefault();
-    return <Redirect to="/signup" />;
+
+  const onClickSignUp = () => {
+    setActiveModal("signup");
   };
+
   return (
     <ModalWithForm
       onClose={handleCloseModal}
@@ -63,23 +65,22 @@ const LoginModal = ({
         ></input>
       </label>
       <div className="modal__button-container">
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onChange={handleSubmit}
-      >
-        Log In
-      </button>
-      <button
-        className="modal__submit-register-button"
-        type="button"
-        name="button"
-        onChange={handleRegister}
-        onClick={onClickSignUp}
-      >
-        or Register
-      </button>
+        <button
+          className="modal__submit-button"
+          type="submit"
+          name="button"
+          onChange={handleSubmit}
+        >
+          Login
+        </button>
+        <button
+          className="modal__submit-register-button"
+          type="button"
+          name="button"
+          onClick={onClickSignUp}
+        >
+          or Register
+        </button>
       </div>
     </ModalWithForm>
   );

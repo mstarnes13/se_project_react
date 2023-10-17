@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
-  console.log("item modal");
+  console.log("item modal", selectedCard.data);
   const userContext = useContext(CurrentUserContext);
   const userData = userContext ? userContext : { name: "n/a", avatar: "" };
   const isOwn = selectedCard.owner === userData._id;
@@ -21,7 +21,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
         ></button>
         <img
           className="modal__image"
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           alt={selectedCard.name}
         ></img>
         <div className="modal__info">
@@ -32,7 +32,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
           <button
             className={modalDeleteClass}
             type="button"
-            onClick={() => handleDeleteCard(selectedCard.id)}
+            onClick={() => handleDeleteCard(selectedCard.data)}
           >
             Delete Item
           </button>

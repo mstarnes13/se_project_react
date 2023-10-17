@@ -5,9 +5,17 @@ import logo from "../../images/Logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Header = ({ onCreateModal, location, onSignUp, onClickLogin, isLoggedIn }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+const Header = ({
+  onCreateModal,
+  location,
+  onClickSignUp,
+  onClickLogin,
+  isLoggedIn,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const { avatar, name } = currentUser;
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -41,7 +49,7 @@ const Header = ({ onCreateModal, location, onSignUp, onClickLogin, isLoggedIn })
           </div>
         ) : (
           <div className="header__avatar-logo">
-            <button className="header__button" onClick={onSignUp}>
+            <button className="header__button" onClick={onClickSignUp}>
               Sign Up
             </button>
             <button className="header__button" onClick={onClickLogin}>

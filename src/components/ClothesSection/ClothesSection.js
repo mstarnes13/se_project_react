@@ -11,10 +11,13 @@ const ClothesSection = ({
   isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-  const userId = currentUser._id;
-  const serverCards = clothingItems.filter((item) => {
-    return item.owner === userId;
+  const userId = currentUser?._id;
+
+  // console.log('clothingItems: ', clothingItems)
+  const serverCards = clothingItems.filter((onSelectCard) => {
+    return onSelectCard.owner === userId;
   });
+
 
   return (
     <div className="clothes__section">
