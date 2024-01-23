@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
+import { register } from "../../utils/auth";
 
 const RegisterModal = ({
   handleCloseModal,
   isOpen,
+  OnClickLogIn,
   handleRegistration,
-  onClickLogin,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,24 +16,32 @@ const RegisterModal = ({
   const [avatar, setUrl] = useState("");
 
   const handleEmailChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setEmail(e.target.value);
   };
+
   const handlePasswordChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setPassword(e.target.value);
   };
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
+
   const handleUrlChange = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setUrl(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submit:', email, password, name, avatar)
-    handleRegistration({email, password, name, avatar});
+    handleRegistration(email, password, name, avatar);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    return <Redirect to="/login" />;
   };
 
   return (
@@ -39,10 +49,6 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      buttonText={"Next"}
-      hasRedirectButton={true}
-      redirectButtonText="or Login"
-      redirectButtonClick={onClickLogin}
     >
       <h2>Sign up</h2>
       <label className="modal__label">
@@ -61,7 +67,7 @@ const RegisterModal = ({
         Password*
         <input
           className="modal__password"
-          type="password"
+          type="text"
           name="password"
           placeholder="Password"
           minLength="1"
@@ -80,9 +86,9 @@ const RegisterModal = ({
           placeholder="Name"
           minLength="1"
           maxLength="30"
+          required
           value={name}
           onChange={handleNameChange}
-          required
         ></input>
       </label>
       <label className="modal__label">
@@ -96,9 +102,27 @@ const RegisterModal = ({
           maxLength="300"
           value={avatar}
           onChange={handleUrlChange}
-          required
         ></input>
       </label>
+      <div className="button-container">
+        <button
+          className="modal__submit-button"
+          type="submit"
+          name="button"
+          onChange={handleSubmit}
+        >
+          Next
+        </button>
+        <button
+          className="modal__form-button"
+          type="button"
+          name="button"
+          onChange={handleLogin}
+          onClick={OnClickLogIn}
+        >
+          or Log in
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

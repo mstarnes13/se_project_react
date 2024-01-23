@@ -266,8 +266,8 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "login"}
             handleLogin={handleLogin}
-            onClickSignUp={handleSignUpModal}
-            isLoading={isLoading}
+           onLoginModal={handleLogInModal}
+           isLoading={isLoading}
           />
         )}
 

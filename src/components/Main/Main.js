@@ -1,20 +1,16 @@
-// import { defaultClothingItems } from "../../utils/constants";
-import WeatherCard from "../WeatherCard/WeatherCard";
-import ItemCard from "../ItemCard/ItemCard";
-import { useContext } from "react";
 import "./Main.css";
+//import { defaultClothingItems } from "../../utils/constants";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/itemCard";
+import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({
-  weatherTemp,
-  onSelectCard,
-  clothingItems,
-  onCardClick,
-  isLoggedIn,
-}) {
+function Main({ weatherTemp, onSelectCard, clothingItems, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  // console.log(currentTemperatureUnit);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
+  console.log(currentTemperatureUnit);
+
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+
   const getWeatherType = () => {
     if (currentTemperatureUnit === "C") {
       if (temp >= 30) {
@@ -36,34 +32,26 @@ function Main({
   };
 
   const weatherType = getWeatherType();
-
-  console.log('clothingItems: ', clothingItems)
-
-  // const filteredCards = clothingItems.length > 0 ? clothingItems.filter((item) => {
-  //   console.log('item filteredCards: ', item.weather)
-  //   return item.weather.toLowerCase() === weatherType;
-  // }) : []
-
+  console.log(weatherType);
   const filteredCards = clothingItems?.filter((item) => {
     // console.log(item);
     return item.weather.toLowerCase() === weatherType;
   });
-
+  // console.log(filteredCards);
   return (
     <main className="main">
       <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        <div className="weather__suggest">
-          Today is {temp}°{currentTemperatureUnit} / You may want to wear:
-        </div>
-        <div className="card__items">
+        <span className="weather__suggest">
+          Today is {temp}°{currentTemperatureUnit} You may want to wear:{" "}
+        </span>
+        <div className="card_items">
           {filteredCards.map((item) => (
             <ItemCard
               item={item}
               onSelectCard={onSelectCard}
               key={item?._id || item?.id}
-              onCardClick={onCardClick}
-              isLoggedIn={isLoggedIn}
+              onCardLike={onCardLike}
             />
           ))}
         </div>
@@ -71,4 +59,5 @@ function Main({
     </main>
   );
 }
+
 export default Main;

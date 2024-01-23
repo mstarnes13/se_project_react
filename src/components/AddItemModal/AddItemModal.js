@@ -4,13 +4,14 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
+    console.log(e.target.value);
     setName(e.target.value);
   };
 
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (e) => {
     console.log(e.target.value);
-    setImageUrl(e.target.value);
+    setUrl(e.target.value);
   };
 
   const [weather, setWeatherType] = useState("");
@@ -40,7 +41,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
             type="text"
             name="name"
             minLength="1"
-            maxLength="300"
+            maxLength="30"
             placeholder="Name"
             value={name}
             onChange={handleNameChange}
@@ -51,7 +52,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
           <input
             className="modal__input-name"
             type="url"
-            name="imageUrl"
+            name="link"
             minLength="1"
             placeholder="Image URL"
             value={imageUrl}
@@ -69,7 +70,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               type="radio"
               id="hot"
               value="hot"
-              name="weather"
+              name="weatherType"
               onChange={handleWeatherType}
             />
             <label>
@@ -83,7 +84,7 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               type="radio"
               id="warm"
               value="warm"
-              name="weather"
+              name="weatherType"
               onChange={handleWeatherType}
             />
             <label>Warm</label>
@@ -95,11 +96,14 @@ const AddItemModal = ({ handleCloseModal, handleAddItemSubmit, isOpen }) => {
               type="radio"
               id="cold"
               value="cold"
-              name="weather"
+              name="weatherType"
               onChange={handleWeatherType}
             />
             <label>Cold</label>
           </div>
+          <button className="modal__form-button" type="submit">
+            Add Garment
+          </button>
         </div>
       </div>
     </ModalWithForm>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { React, useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./ClothesSection.css";
@@ -7,17 +7,14 @@ const ClothesSection = ({
   onSelectCard,
   onCreateModal,
   clothingItems,
-  onCardLike,
+  onCardClick,
   isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const userId = currentUser?._id;
-
-  // console.log('clothingItems: ', clothingItems)
-  const serverCards = clothingItems.filter((onSelectCard) => {
-    return onSelectCard.owner === userId;
+  const serverCards = clothingItems.filter((item) => {
+    return item.owner === userId;
   });
-
 
   return (
     <div className="clothes__section">
@@ -38,7 +35,7 @@ const ClothesSection = ({
             item={item}
             onSelectCard={onSelectCard}
             isLoggedIn={isLoggedIn}
-            onCardLike={onCardLike}
+            onCardClick={onCardClick}
           />
         ))}
       </div>

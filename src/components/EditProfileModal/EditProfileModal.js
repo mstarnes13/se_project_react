@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "./EditProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
